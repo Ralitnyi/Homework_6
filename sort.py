@@ -74,11 +74,11 @@ def file_move():
             except shutil.Error:
                 continue
         elif file_name.endswith('.zip') or file_name.endswith('.gz') or file_name.endswith('.tar'):
-            try:
-                shutil.move(file, f'{p}\\archives' )
-            except shutil.Error:
-                continue
-    
+             
+            shutil.unpack_archive(file, f'{p}\\archives')
+            os.remove(file)
+            
+
     for folder_in_dir in p.iterdir():
         if folder_in_dir.name != 'archives' and folder_in_dir.name != 'audio' and folder_in_dir.name != 'documents'\
             and folder_in_dir.name != 'video' and folder_in_dir.name != 'images':
@@ -87,26 +87,8 @@ def file_move():
             except OSError:
                 continue
 
-    
-    path_to_archive = Path(f'{p}\\archives')
-    for zip_file in path_to_archive.iterdir():
-        print(zip_file, zip_file.name, 2)
-        shutil.unpack_archive(zip_file, path_to_archive)
-
-
-
+       
 file_move()
-
-
-
-
-
-
-
-
-
-
-
 
 
 

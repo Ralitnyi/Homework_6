@@ -52,27 +52,48 @@ def normalize():
 def file_move():
     for file in normalize():
         file_name = file.name
-        if file_name.endswith('.png') or file_name.endswith('.jpeg') or file_name.endswith('.jpg') or file_name.endswith('.svg'):
+        if file_name.endswith('.png') or file_name.endswith('.jpeg') or file_name.endswith('.jpg') or file_name.endswith('.svg'):                  
             try:
+                os.makedirs(f'{p}\images')
+            except FileExistsError:
+                pass
+            try:                     
                 shutil.move(file, f'{p}\images' )
             except shutil.Error:
                 continue
+            
         elif file_name.endswith('.avi') or file_name.endswith('.mp4') or file_name.endswith('.mov') or file_name.endswith('.mkv'):
             try:
+                os.makedirs(f'{p}\\video')
+            except FileExistsError:
+                pass
+            try:                    
                 shutil.move(file, f'{p}\\video' )
             except shutil.Error:
                 continue
+            
+
         elif file_name.endswith('.doc') or file_name.endswith('.docx') or file_name.endswith('.txt') or file_name.endswith('.pdf')\
             or file_name.endswith('.xlsx') or file_name.endswith('.pptx'):
             try:
+                os.makedirs(f'{p}\documents')
+            except FileExistsError:
+                pass
+            try:                               
                 shutil.move(file, f'{p}\documents' )
             except shutil.Error:
                 continue
+            
         elif file_name.endswith('.mp3') or file_name.endswith('.ogg') or file_name.endswith('.wav') or file_name.endswith('.amr'):
             try:
+                os.makedirs(f'{p}\\audio')
+            except FileExistsError:
+                pass
+            try:                               
                 shutil.move(file, f'{p}\\audio' )
             except shutil.Error:
                 continue
+            
         elif file_name.endswith('.zip') or file_name.endswith('.gz') or file_name.endswith('.tar'):
              
             shutil.unpack_archive(file, f'{p}\\archives')

@@ -109,7 +109,5 @@ def file_move():
                 continue
 
        
-file_move()
-
-
-
+if __name__ == '__main__':
+    file_move()

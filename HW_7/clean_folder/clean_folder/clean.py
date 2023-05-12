@@ -108,6 +108,8 @@ def file_move():
             except OSError:
                 continue
 
+def main():
+    file_move()
        
 if __name__ == '__main__':
-    file_move()
+    main()

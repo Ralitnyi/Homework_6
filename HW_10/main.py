@@ -12,26 +12,26 @@ class Field():
         self.value = value
 
 class Name(Field):
-    
-    def __init__(self, value):
-        super().__init__(value)
+    pass 
 
 
 class Phone(Field):
-    
-    def __init__(self, value):
-        super().__init__(value)
+    pass
 
 class Record():
     
     def __init__(self, name, phone= None):
         self.name = name
-        self.phones = []
-        self.phones.append(phone)
+        if phone:
+           self.phones = []
+           self.phones.append(phone)
 
     def add_phone(self, phone):
-        
-        self.phones.append(Phone(phone))
+        try:
+            self.phones.append(Phone(phone))
+        except AttributeError:
+            self.phones = []
+            self.phones.append(Phone(phone))
 
     def remove_phone(self, phone):
         for old_phone in self.phones:
@@ -46,8 +46,9 @@ class Record():
 
 if __name__ == "__main__":
     name = Name('Bill')
-    phone = Phone('1234567890')
-    rec = Record(name, phone)
+    # phone = Phone('1234567890')
+    rec = Record(name)
+    rec.add_phone('1234567890')
     ab = AddressBook()
     ab.add_record(rec)
     print(ab)

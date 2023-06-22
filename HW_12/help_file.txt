@@ -1,0 +1,12 @@
+there are such command:
+help - to get help
+hello - to get greeting
+create <name*> <phone> <birthday (DD.MM.YYYY)> - to create new contact
+add <name*> <phone*> - to add new phone for <name>
+change <name*> <old phone*> <new phone*> - to change the old number to the new number
+show all - to see all contacts
+delete <name*> - to delete contact
+remove <name*> <phone*> - to delete number
+birthday <name*> <birthday*> - to add the birthday in contact (name)
+search <value*> - to search info about contacts by nama or number
+good bye|close|exit - to close
